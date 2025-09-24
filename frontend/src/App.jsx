@@ -22,6 +22,7 @@ import pothole1 from "./assets/pothole1.jpg"
 import streetlight1 from "./assets/streetlight1.jpg"
 import pothole2 from "./assets/pothole2.jpg"
 import streetlight2 from "./assets/streetlight2.webp"
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
@@ -37,7 +38,7 @@ function App() {
       status: "pending",
       date: "2023-10-15",
       citizen: "Rahul Sharma",
-      image: pothole1  // Replace with your actual 400x300 image in public/assets/
+      image: pothole1
     },
     {
       id: 2,
@@ -48,7 +49,7 @@ function App() {
       status: "approved",
       date: "2023-10-14",
       citizen: "Priya Singh",
-      image: streetlight1// Replace with your actual 400x300 image
+      image: streetlight1
     },
     {
       id: 3,
@@ -59,7 +60,7 @@ function App() {
       status: "completed",
       date: "2023-10-10",
       citizen: "Amit Kumar",
-      image: pothole2  // Replace with your actual 400x300 image
+      image: pothole2
     },
     {
       id: 4,
@@ -70,13 +71,12 @@ function App() {
       status: "pending",
       date: "2023-10-16",
       citizen: "Neha Gupta",
-      image: streetlight2  // Replace with your actual 400x300 image
+      image: streetlight2
     }
   ]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Simple authentication for demo purposes
     if (username === 'admin' && password === 'admin123') {
       setIsLoggedIn(true);
     } else {
@@ -100,25 +100,25 @@ function App() {
     ? complaints 
     : complaints.filter(complaint => complaint.status === selectedStatus);
 
+  // -------- LOGIN PAGE -----------
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-green-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+      <div className="min-h-screen bg-white flex items-center justify-center p-4">
+        <div className="bg-gradient-to-r from-[#8ABCAA] to-[#BCE76D] rounded-lg shadow-lg p-8 w-full max-w-md">
           <div className="flex justify-center mb-6">
-            {/* Logo Placeholder - Add your logo to public/assets/logo.png */}
             <img 
               src="/assets/logo.png" 
               alt="JanSetu Logo" 
               className="w-16 h-16 rounded-full object-cover"
-              onError={(e) => { e.target.style.display = 'none'; }}  // Fallback if logo missing
+              onError={(e) => { e.target.style.display = 'none'; }}
             />
           </div>
-          <h1 className="text-2xl font-bold text-center text-green-800 mb-2">JanSetu</h1>
-          <p className="text-center text-gray-600 mb-8">Government Complaint Management System</p>
+          <h1 className="text-2xl font-bold text-center text-green-900 mb-2">JanSetu</h1>
+          <p className="text-center text-gray-800 mb-8">Government Complaint Management System</p>
           
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-900 mb-1">
                 Username
               </label>
               <input
@@ -126,14 +126,14 @@ function App() {
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 placeholder="Enter your username"
                 required
               />
             </div>
             
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-900 mb-1">
                 Password
               </label>
               <input
@@ -141,7 +141,7 @@ function App() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-700"
                 placeholder="Enter your password"
                 required
               />
@@ -149,13 +149,13 @@ function App() {
             
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              className="w-full bg-[#6AAB95] text-white py-2 px-4 rounded-md hover:bg-[#5A9C85] transition duration-200 focus:outline-none focus:ring-2 focus:ring-[#6AAB95] focus:ring-offset-2"
             >
               Login
             </button>
           </form>
           
-          <p className="mt-6 text-center text-sm text-gray-500">
+          <p className="mt-6 text-center text-sm text-gray-900">
             Demo credentials: admin / admin123
           </p>
         </div>
@@ -163,18 +163,18 @@ function App() {
     );
   }
 
+  // -------- DASHBOARD -----------
   return (
     <div className="min-h-screen bg-green-50">
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            {/* Logo Placeholder in Header - Same as login */}
             <img 
               src="/assets/logo.png" 
               alt="JanSetu Logo" 
               className="w-10 h-10 rounded-full object-cover mr-3"
-              onError={(e) => { e.target.style.display = 'none'; }}  // Fallback if logo missing
+              onError={(e) => { e.target.style.display = 'none'; }}
             />
             <h1 className="text-2xl font-bold text-green-800">JanSetu</h1>
           </div>
